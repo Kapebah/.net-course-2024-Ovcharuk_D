@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace BankSystem.Domain.Models
 {
-    internal class Person
+    public class Person
     {
+        public string Name { get; set; }
+        public string PassportDetails { get; set; }
+        public int Age { get; set; }
+        public string PhoneNumber { get; set; }
+
     }
 }

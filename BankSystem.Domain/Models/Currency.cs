@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BankSystem.Domain.Models
 {
-    internal struct Currency
+    public struct Currency
     {
+        public string Type { get; set; }
     }
 }
