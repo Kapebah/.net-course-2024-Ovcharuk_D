@@ -1,6 +1,7 @@
 ﻿using BankSystem.Domain.Models;
 using BankSystem.App.Services;
 using static System.Console;
+using System.Security;
 
 //Practice 1
 
@@ -13,18 +14,18 @@ Employee _employee = new Employee
 };
 Currency _currency = new Currency { Type = "RUB" };
 
-void UpdateContruct (Employee employee)
+void UpdateContruct(Employee employee)
 {
     employee.Contruct = "Contruct is confirm";
 }
 
-void UpdateCurrency (Currency currency)
+void UpdateCurrencyWithoutChanges(Currency currency)
 {
     currency.Type = "EUR";
 }
 
 UpdateContruct(_employee);
-UpdateCurrency(_currency);
+UpdateCurrencyWithoutChanges(_currency);
 
 //Значение в employee.Contruct поменялось, а в currency.Type нет,
 //т.к. при передаче объекта класса мы ссылаемся на одну и ту же ссылку,
@@ -32,7 +33,18 @@ UpdateCurrency(_currency);
 //а при передаче структуры у нас создается копия (новый объект),
 //и изменения в копии не влияют на оригинал
 WriteLine($"{_employee.Name}'s {_employee.Contruct}");
-WriteLine($"{_currency.Type}");
+WriteLine($"Without changes: {_currency.Type}");
+
+//В таком случае мы сможем изменить значение валюты
+Currency UpdateCurrencyWithChanges(Currency currency)
+{
+    currency.Type = "USD";
+    return currency;
+}
+
+_currency = UpdateCurrencyWithChanges(_currency);
+
+WriteLine($"With changes: {_currency.Type}");
 
 //Practice 2
 

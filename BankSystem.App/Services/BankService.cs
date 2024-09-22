@@ -9,11 +9,11 @@ namespace BankSystem.App.Services
 {
     public class BankService
     {
-        public static int calculateSalary(int bankProfit, int expenses, int ownerNumber) 
+        public static int CalculateSalary(int bankProfit, int expenses, int ownerNumber) 
             => (bankProfit - expenses) / ownerNumber;
         
 
-        public static Employee convertClientToEmployee(Client client)
+        public static Employee ConvertClientToEmployee(Client client)
             => new Employee
             {
                 Name = client.Name,
